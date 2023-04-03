@@ -13,13 +13,11 @@ export class LoginService {
   constructor(
     private http: HttpClient,
     private localStorage: LocalStorageService
-    ) { }
+  ) { }
 
   endpoint = 'login';
   api = environment.api;
 
-  public username: string | undefined = '';
-  public password: string | undefined= '';
   public authorizationData = '';
   public httpOptions = {
     headers: new HttpHeaders()
@@ -27,15 +25,12 @@ export class LoginService {
 
   setData(login: Partial<Login>){
     this.localStorage.set('username', String(login.username));
-    this.localStorage.set('password', String(login.password));
-
-    this.username = this.localStorage.get('username');
-    this.password = this.localStorage.get('password');
+    this.localStorage.set('token', String(login.token));
 
   }
 
   getOptions(){
-    this.authorizationData = 'Basic ' + btoa(this.localStorage.get('username') + ':' + this.localStorage.get('password'));
+    this.authorizationData = 'Bearer ' + this.localStorage.get('token');
     return this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -45,11 +40,11 @@ export class LoginService {
   }
 
   authenticate(login: Partial<Login>){
-    return this.http.post<Login>(`${this.api}/${this.endpoint}/authenticate`, login);
+    return this.http.post<Login>(`${this.api}/${this.endpoint}/authenticate/`, login);
   }
 
   cadastro(login: Partial<Login>){
-    return this.http.post<Login>(`${this.api}/${this.endpoint}`, login);
+    return this.http.post<Login>(`${this.api}/${this.endpoint}/register/`, login);
   }
 
   logOut(){
@@ -57,8 +52,8 @@ export class LoginService {
   }
 
   isAuthenticated(){
-    let userPresent = this.localStorage.get('username');
-    return userPresent ? true: false;
+    let isTokenPresent = this.localStorage.get('token');
+    return isTokenPresent ? true: false;
   }
 
 }
