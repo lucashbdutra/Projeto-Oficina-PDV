@@ -26,4 +26,8 @@ public class Venda extends GenericEntity<Long>{
     @ManyToOne
     @JoinColumn(name = "fk_cliente_id")
     private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_funcionario_id")
+    private Funcionario funcionario;
 }

@@ -1,11 +1,9 @@
 package com.pdv.oficina.controller.auth;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/rest/auth")
@@ -19,15 +17,26 @@ public class AuthenticationController {
      * @param request
      * @return
      */
-    @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest request){
-        return ResponseEntity.ok(service.register(request));
+    @PostMapping("/registerAdmin")
+    public ResponseEntity<AuthenticationResponse> registerAdmin(@RequestBody RegisterRequest request){
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.registerAdmin(request));
+
+    }
+
+    @PostMapping("/registerFuncionario/{idFuncionario}")
+    public ResponseEntity<AuthenticationResponse> registerFuncionario(@PathVariable Long idFuncionario,@RequestBody RegisterRequest request){
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.registerFuncionario(idFuncionario, request));
 
     }
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request){
         return ResponseEntity.ok(service.authenticate(request));
+    }
+
+    @GetMapping
+    public boolean isFirstLogin(){
+        return service.isFirstLogin();
     }
 
 

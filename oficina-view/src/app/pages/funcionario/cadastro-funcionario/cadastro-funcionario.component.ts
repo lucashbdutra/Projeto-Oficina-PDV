@@ -77,11 +77,12 @@ export class CadastroFuncionarioComponent implements OnInit {
         });
       });
     }
-    this.funcionarioService.salvar(funcionario).subscribe(() => {
+    this.funcionarioService.salvar(funcionario).subscribe((funcionario: Funcionario) => {
       this.toaster.success('Cadastro realizado com sucesso!', '', {
         timeOut: 3000,
       });
-      this.router.navigate(['/funcionarios']);
+      console.log(funcionario);
+      this.router.navigate([`/login/cadastro/${funcionario.id}`]);
     }, (erro) => {
       this.toaster.error('Houve um problema com sua solicitação!', '', {
         timeOut: 2000,

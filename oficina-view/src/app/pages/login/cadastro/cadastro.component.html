@@ -5,35 +5,38 @@
             <span class="title">Cadastrar</span>
 
             <form [formGroup]="form" (ngSubmit)="onCadastro()">
-                <div class="input-field">
-                    <input type="text" placeholder="Entre com usuário" formControlName="username">
-                </div>
-
-                <div class="input-field">
-                    <input type="password" class="password" placeholder="Digite a sua senha" formControlName="password">
-                </div>
-
-                <div class="input-field">
-                  <input type="password" class="password" placeholder="Digite a sua senha" formControlName="confirmarSenha">
+              <div class="input-field">
+                  <input type="text" placeholder="Entre com usuário" formControlName="username">
               </div>
 
-                <div class="checkbox-text">
-                  <div class="checkbox-content">
-                      <input type="checkbox" id="termCon">
-                      <label for="termCon" class="text">Eu aceite todos os <a class="login-link">termos e condições</a></label>
-                  </div>
+              <div class="input-field">
+                  <input type="password" class="password" placeholder="Digite a sua senha" formControlName="password">
+              </div>
+
+              <div class="input-field">
+                <input type="password" class="password" placeholder="Digite a sua senha" formControlName="confirmarSenha">
+              </div>
+
+              <!-- <div class="checkbox" *ngIf="idFuncionario">
+                <div class="form-check">
+                  <input class="form-check-input" name="funcionario" type="checkbox" value="false" formControlName="funcionario" checked>
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Administrador
+                  </label>
                 </div>
 
-                <div class="input-field button">
-                    <input type="submit" value="Cadastrar">
+                <div class="form-check" id="space">
+                  <input class="form-check-input" name="funcionario" type="checkbox" value="true" formControlName="funcionario">
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Funcionário
+                  </label>
                 </div>
+              </div> -->
+
+              <div class="input-field button">
+                  <input type="submit" value="Cadastrar">
+              </div>
             </form>
-
-            <div class="login-signup">
-              <span class="text">Já é um membro?
-                  <a (click)="onLogin()" class="text login-link">Conecte-se agora</a>
-              </span>
-            </div>
         </div>
     </div>
   </div>

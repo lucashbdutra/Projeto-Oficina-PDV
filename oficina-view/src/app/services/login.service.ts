@@ -15,7 +15,7 @@ export class LoginService {
     private localStorage: LocalStorageService
   ) { }
 
-  endpoint = 'login';
+  endpoint = 'auth';
   api = environment.api;
 
   public authorizationData = '';
@@ -24,6 +24,10 @@ export class LoginService {
   };
 
   setData(login: Partial<Login>){
+
+    if(!login.funcionario){
+      this.localStorage.set('admin', 'true');
+    }
     this.localStorage.set('username', String(login.username));
     this.localStorage.set('token', String(login.token));
 
@@ -43,8 +47,16 @@ export class LoginService {
     return this.http.post<Login>(`${this.api}/${this.endpoint}/authenticate/`, login);
   }
 
-  cadastro(login: Partial<Login>){
-    return this.http.post<Login>(`${this.api}/${this.endpoint}/register/`, login);
+  cadastroAdmin(login: Partial<Login>){
+    return this.http.post<Login>(`${this.api}/${this.endpoint}/registerAdmin/`, login);
+  }
+
+  cadastroFuncionario(idFuncionario: Number, login: Partial<Login>){
+    return this.http.post<Login>(`${this.api}/${this.endpoint}/registerFuncionario/${idFuncionario}`, login);
+  }
+
+  isFirstLogin(){
+    return this.http.get<boolean>(`${this.api}/${this.endpoint}`);
   }
 
   logOut(){

@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -15,12 +15,22 @@ export class LoginComponent implements OnInit {
 
   cadastro:boolean = false;
 
+
   constructor(
     private formBuilder: NonNullableFormBuilder,
     private loginService: LoginService,
     private toaster: ToastrService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
+
+    this.loginService.isFirstLogin().subscribe((firstLogin :boolean)=>{
+      if(firstLogin){
+        this.onCadastro();
+      }
+    })
+
+
 
     localStorage.removeItem('username');
   }

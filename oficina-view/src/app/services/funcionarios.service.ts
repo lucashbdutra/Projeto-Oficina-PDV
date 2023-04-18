@@ -18,7 +18,7 @@ export class FuncionariosService {
   ) { }
 
   listar(){
-    return this.http.get<Funcionario[]>(`${this.api}/${this.endpoint}/`);
+    return this.http.get<Funcionario[]>(`${this.api}/${this.endpoint}/`, this.loginService.getOptions());
   }
 
   deletar(id: number){
@@ -34,6 +34,6 @@ export class FuncionariosService {
   }
 
   buscaPorId(id: number){
-    return this.http.get<Funcionario>(`${this.api}/${this.endpoint}/${id}`);
+    return this.http.get<Funcionario>(`${this.api}/${this.endpoint}/${id}`, this.loginService.getOptions());
   }
 }

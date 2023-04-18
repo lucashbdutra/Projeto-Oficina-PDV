@@ -45,6 +45,10 @@ public class Login implements UserDetails, Serializable {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
+    @OneToOne
+    @JoinColumn(name = "fk_funcionario_id")
+    private Funcionario funcionario;
+
     @Override
     public String getPassword() {
         return this.password;

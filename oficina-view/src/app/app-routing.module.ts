@@ -26,6 +26,10 @@ const routes: Routes = [
   },
 
   {
+    path: 'login/cadastro/:idFuncionario', component: CadastroComponent
+  },
+
+  {
     path: '', pathMatch: 'full', redirectTo: 'login'
   },
 
