@@ -1,8 +1,10 @@
 package com.pdv.oficina.model.service;
 
 
+import com.pdv.oficina.model.entity.Login;
 import com.pdv.oficina.model.entity.Produto;
 import com.pdv.oficina.model.entity.Venda;
+import com.pdv.oficina.model.repository.LoginRepository;
 import com.pdv.oficina.model.repository.ProdutosRepository;
 import com.pdv.oficina.model.repository.VendasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +24,18 @@ public class VendaService extends GenericCrudService<Venda, Long, VendasReposito
     private VendasRepository vendasRepository;
     @Autowired
     private ProdutosRepository produtosRepository;
+    @Autowired
+    private LoginRepository loginRepository;
 
 
-    public Venda makeSell(Venda venda){
+    public Venda makeSell(Venda venda, String username){
 
         Date date = new Date();
         Format format = new SimpleDateFormat("MM/yyyy");
         List<Produto> produtos = venda.getProdutos();
         long subtotal = 0;
         BigDecimal total;
+        Login usuario = loginRepository.findByUsername(username).orElse(null);
 
         for(Produto produto: produtos){
 
@@ -44,9 +49,10 @@ public class VendaService extends GenericCrudService<Venda, Long, VendasReposito
             } else {
 
                 alterQuant.setQuantidade(alterQuant.getQuantidade() - produto.getQuantidade());
-                produtosRepository.save(alterQuant);
+                subtotal += produto.getQuantidade() * produto.getValorCusto().floatValue();
 
-                subtotal += produto.getQuantidade() * produto.getValorFinal().floatValue();
+                alterQuant.setValorFinal(alterQuant.getValorFinal().subtract(BigDecimal.valueOf(subtotal)));
+                produtosRepository.save(alterQuant);
             }
 
         }
@@ -55,6 +61,7 @@ public class VendaService extends GenericCrudService<Venda, Long, VendasReposito
         venda.setData(date);
         venda.setValor(total);
         venda.setMesAno(format.format(date));
+        venda.setLogin(usuario);
 
         vendasRepository.save(venda);
         return venda;

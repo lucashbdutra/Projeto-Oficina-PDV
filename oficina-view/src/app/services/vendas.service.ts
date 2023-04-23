@@ -17,7 +17,7 @@ export class VendasService {
     private loginService: LoginService
   ) { }
 
-  realizarVenda(venda: Partial<Venda>){
-    return this.http.post<Venda>(`${this.api}/${this.endpoint}/realizarVenda`, venda, this.loginService.getOptions());
+  realizarVenda(venda: Partial<Venda>, username: string){
+    return this.http.post<Venda>(`${this.api}/${this.endpoint}/realizarVenda/${username}`, venda, this.loginService.getOptions());
   }
 }

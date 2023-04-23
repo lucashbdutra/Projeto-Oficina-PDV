@@ -1,6 +1,7 @@
 package com.pdv.oficina.model.entity;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -28,6 +29,6 @@ public class Venda extends GenericEntity<Long>{
     private Cliente cliente;
 
     @ManyToOne
-    @JoinColumn(name = "fk_funcionario_id")
-    private Funcionario funcionario;
+    @JoinColumn(name = "fk_login_id")
+    private Login login;
 }

@@ -18,7 +18,7 @@ export class ClientesService {
   ) { }
 
   listar(){
-    return this.http.get<Cliente[]>(`${this.api}/${this.endpoint}/`);
+    return this.http.get<Cliente[]>(`${this.api}/${this.endpoint}/`, this.loginService.getOptions());
   }
 
   deletar(id: number){
@@ -34,7 +34,7 @@ export class ClientesService {
   }
 
   buscaPorId(id: number){
-    return this.http.get<Cliente>(`${this.api}/${this.endpoint}/${id}`);
+    return this.http.get<Cliente>(`${this.api}/${this.endpoint}/${id}`, this.loginService.getOptions());
   }
 
 }

@@ -48,7 +48,8 @@
                 <td *ngIf="!produto.isService"> {{ produto.quantidade }} </td>
                 <td *ngIf="produto.isService"> Serviço </td>
 
-                <td> R$ {{ produto.valorFinal }}</td>
+                <td *ngIf="!produto.isService"> R$ {{ produto.valorCusto }}</td>
+                <td *ngIf="produto.isService"> R$ {{ produto.valorFinal }}</td>
                 <td >
                   <input type="number" class="form-control" formControlName="quantidade"
                   placeholder="Quantidade" *ngIf="!produto.isService">

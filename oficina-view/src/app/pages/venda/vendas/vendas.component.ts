@@ -1,3 +1,4 @@
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProdutosService } from './../../../services/produtos.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -49,6 +50,7 @@ export class VendasComponent implements OnInit {
     private clienteService: ClientesService,
     private vendasService: VendasService,
     private produtosService: ProdutosService,
+    private localStorage: LocalStorageService,
     private route: ActivatedRoute,
     private toaster: ToastrService
   ) { }
@@ -97,7 +99,7 @@ export class VendasComponent implements OnInit {
       if(produtoNew.isService){
         this.subtotal += produtoNew.valorFinal;
       } else{
-        this.subtotal += produtoNew.valorFinal * produtoNew.quantidade;
+        this.subtotal += produtoNew.valorCusto * produtoNew.quantidade;
       }
 
     }
@@ -118,7 +120,7 @@ export class VendasComponent implements OnInit {
       if(produto.isService){
         valor += produto.valorFinal;
       } else{
-        valor += produto.valorFinal * produto.quantidade;
+        valor += produto.valorCusto * produto.quantidade;
       }
     }
     this.subtotal = valor;
@@ -138,11 +140,12 @@ export class VendasComponent implements OnInit {
   }
 
   onSubmit(){
+    let username = String(this.localStorage.get('username'));
     const cliente = this.cliente as Cliente;
     let venda: Partial<Venda> = {};
     venda.cliente = cliente;
     venda.produtos = this.produtosList;
-    this.vendasService.realizarVenda(venda).subscribe((venda: Venda) => {
+    this.vendasService.realizarVenda(venda, username).subscribe((venda: Venda) => {
       if(venda){
         this.vendas = venda;
         this.toaster.success('Venda realizada com sucesso!', '', {

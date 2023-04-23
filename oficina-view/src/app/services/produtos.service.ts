@@ -18,7 +18,7 @@ export class ProdutosService {
   ) { }
 
   listar(){
-    return this.http.get<Produto[]>(`${this.api}/${this.endpoint}/`);
+    return this.http.get<Produto[]>(`${this.api}/${this.endpoint}/`, this.loginService.getOptions());
   }
 
   deletar(id: number){
@@ -34,6 +34,6 @@ export class ProdutosService {
   }
 
   buscaPorId(id: number){
-    return this.http.get<Produto>(`${this.api}/${this.endpoint}/${id}`);
+    return this.http.get<Produto>(`${this.api}/${this.endpoint}/${id}`, this.loginService.getOptions());
   }
 }

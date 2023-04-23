@@ -19,7 +19,7 @@ export class CadastroProdutoComponent implements OnInit {
     nome:['', Validators.required],
     quantidade:[0, Validators.required],
     valorCusto:[0, Validators.required],
-    valorFinal:[0, Validators.required]
+    valorFinal:[0]
   })
 
   servico = this.formBuilder.group({
@@ -57,9 +57,15 @@ export class CadastroProdutoComponent implements OnInit {
     }
   }
 
+  calculoValorFinal(valorCusto: number, quantidade: number){
+    let valorFinal = valorCusto * quantidade;
+    return valorFinal
+  }
+
   cadastrar(){
     let produto = this.produto.value as Produto;
     const id = this.idProduto;
+    produto.valorFinal = this.calculoValorFinal(produto.valorCusto, produto.quantidade);
 
     if(id != 0){
       produto.id = id;

@@ -26,7 +26,7 @@ export class GastosMensaisService {
   }
 
   listar(){
-    return this.http.get<Gastos[]>(`${this.api}/${this.endpoint}/`);
+    return this.http.get<Gastos[]>(`${this.api}/${this.endpoint}/`, this.loginService.getOptions());
   }
 
 }
