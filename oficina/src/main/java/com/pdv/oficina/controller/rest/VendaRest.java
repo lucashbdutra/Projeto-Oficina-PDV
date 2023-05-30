@@ -1,6 +1,7 @@
 package com.pdv.oficina.controller.rest;
 
 
+import com.pdv.oficina.model.DTO.VendasPorFuncionarioDTO;
 import com.pdv.oficina.model.entity.Venda;
 import com.pdv.oficina.model.service.VendaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,12 @@ public class VendaRest extends GenericCrudRest<Venda, Long, VendaService>{
 
         return ResponseEntity.status(HttpStatus.CREATED).body(vendaService.makeSell(venda, username));
     }
+
+    @GetMapping("/vendasPorFuncionario/{username}/{mes}")
+    public ResponseEntity<VendasPorFuncionarioDTO> vendasPorFuncionario(@PathVariable String username, @PathVariable String mes){
+
+        return ResponseEntity.ok().body(vendaService.vendasPorFuncionario(username, mes));
+    }
+
 
 }

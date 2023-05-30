@@ -1,4 +1,4 @@
-<div id="login">
+<ng-container *ngIf="idFuncionario; else admin">
   <div class="container">
     <div class="forms">
         <div class="form login">
@@ -17,22 +17,6 @@
                 <input type="password" class="password" placeholder="Digite a sua senha" formControlName="confirmarSenha">
               </div>
 
-              <!-- <div class="checkbox" *ngIf="idFuncionario">
-                <div class="form-check">
-                  <input class="form-check-input" name="funcionario" type="checkbox" value="false" formControlName="funcionario" checked>
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Administrador
-                  </label>
-                </div>
-
-                <div class="form-check" id="space">
-                  <input class="form-check-input" name="funcionario" type="checkbox" value="true" formControlName="funcionario">
-                  <label class="form-check-label" for="flexCheckChecked">
-                    Funcionário
-                  </label>
-                </div>
-              </div> -->
-
               <div class="input-field button">
                   <input type="submit" value="Cadastrar">
               </div>
@@ -40,4 +24,34 @@
         </div>
     </div>
   </div>
-</div>
+</ng-container>
+
+<ng-template #admin>
+  <div id="login">
+    <div class="container">
+      <div class="forms">
+          <div class="form login">
+              <span class="title">Cadastrar</span>
+
+              <form [formGroup]="form" (ngSubmit)="onCadastro()">
+                <div class="input-field">
+                    <input type="text" placeholder="Entre com usuário" formControlName="username">
+                </div>
+
+                <div class="input-field">
+                    <input type="password" class="password" placeholder="Digite a sua senha" formControlName="password">
+                </div>
+
+                <div class="input-field">
+                  <input type="password" class="password" placeholder="Digite a sua senha" formControlName="confirmarSenha">
+                </div>
+
+                <div class="input-field button">
+                    <input type="submit" value="Cadastrar">
+                </div>
+              </form>
+          </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

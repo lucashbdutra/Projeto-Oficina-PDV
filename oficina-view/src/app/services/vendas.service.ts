@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Venda } from '../interfaces/venda';
 import { LoginService } from './login.service';
+import { VendasFuncionario } from '../interfaces/vendas-funcionario';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,9 @@ export class VendasService {
 
   realizarVenda(venda: Partial<Venda>, username: string){
     return this.http.post<Venda>(`${this.api}/${this.endpoint}/realizarVenda/${username}`, venda, this.loginService.getOptions());
+  }
+
+  vendasPorFuncionario(username: string){
+    return this.http.get<VendasFuncionario>(`${this.api}/${this.endpoint}/vendasPorFuncionario/${username}`, this.loginService.getOptions());
   }
 }

@@ -1,6 +1,8 @@
 package com.pdv.oficina.model.service;
 
 
+import com.pdv.oficina.model.DTO.VendasPorFuncionarioDTO;
+import com.pdv.oficina.model.entity.Funcionario;
 import com.pdv.oficina.model.entity.Login;
 import com.pdv.oficina.model.entity.Produto;
 import com.pdv.oficina.model.entity.Venda;
@@ -65,6 +67,36 @@ public class VendaService extends GenericCrudService<Venda, Long, VendasReposito
 
         vendasRepository.save(venda);
         return venda;
+    }
+
+    public VendasPorFuncionarioDTO vendasPorFuncionario(String username, String mes){
+        List<Venda> vendas = vendasRepository.findAllByUsernameAndMonth(username, mes);
+
+        if(vendas.isEmpty()){
+            Login user = loginRepository.findByUsername(username).orElse(null);
+            Funcionario funcionario = user.getFuncionario();
+            BigDecimal valorTotalVendas = this.valorTotalVendas(vendas);
+
+            VendasPorFuncionarioDTO vendasFuncionarioDTO = new VendasPorFuncionarioDTO();
+            vendasFuncionarioDTO.setFuncionario(funcionario);
+            vendasFuncionarioDTO.setVendas(vendas);
+            vendasFuncionarioDTO.setMes(mes);
+            vendasFuncionarioDTO.setValorTotal(valorTotalVendas);
+
+            return vendasFuncionarioDTO;
+        }
+
+        return null;
+
+    }
+
+    private BigDecimal valorTotalVendas(List<Venda> vendas) {
+        BigDecimal somaVendas = new BigDecimal(0);
+        for(Venda venda: vendas){
+            somaVendas = somaVendas.add(venda.getValor());
+        }
+
+        return somaVendas;
     }
 
 
