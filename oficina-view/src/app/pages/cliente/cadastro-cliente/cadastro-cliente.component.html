@@ -28,7 +28,7 @@
 
     <div class="col-12" [align]="'center'">
 
-      <button class="btn btn-danger botao" type="button" routerLink="/clientes">Voltar</button>
+      <button class="btn btn-danger botao" type="button" (click)="backButton()">Voltar</button>
       <button class="btn btn-success" type="submit" [disabled]="!cliente.valid">
         {{idCliente? 'Editar' : "Cadastrar"}}</button>
 

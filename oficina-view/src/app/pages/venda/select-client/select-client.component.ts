@@ -10,6 +10,7 @@ import { Cliente } from 'src/app/interfaces/cliente';
 export class SelectClientComponent implements OnInit {
 
   clientes: Cliente[] = [];
+  backup: Cliente[] = [];
   cliente?: Cliente;
 
   constructor(
@@ -23,12 +24,21 @@ export class SelectClientComponent implements OnInit {
   buscarClientes(){
     this.clienteService.listar().subscribe((clientes: Cliente[]) => {
       this.clientes = clientes;
+      this.backup = clientes;
     })
   }
 
   handleClients(cliente: Cliente){
     const client = cliente as Cliente;
     this.cliente = client;
+  }
+
+  search(event: Event){
+    const target = event.target as HTMLInputElement
+    const value = target.value
+    this.clientes = this.backup.filter((cliente) => {
+      return cliente.cpf.includes(value);
+    })
   }
 
 

@@ -1,6 +1,14 @@
 <button type="button" class="btn btn-primary" routerLink="/clientes/cadastro/venda">Adcionar Cliente</button>
 
 <h2>Selecione o cliente desejado: </h2>
+
+<div>
+  <form class="d-flex" role="search">
+    <input id="input-buscar-clientes" class="form-control me-2" type="search" placeholder="Digite o CPF do cliente"
+    aria-label="Search" (input)="search($event)">
+  </form>
+</div>
+
 <div class="mb-3 clients-list">
   <table
     class="table table-striped table-dark"

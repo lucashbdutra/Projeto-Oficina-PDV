@@ -1,0 +1,25 @@
+19-06-2023 19:09:08.778 | 481  | [main] | INFO  | com.pdv.oficina.OficinaApplication - Iniciando API da oficina
+19-06-2023 19:09:09.590 | 1293 | [main] | INFO  | com.pdv.oficina.OficinaApplication - Starting OficinaApplication using Java 17.0.7 on bartholoseu-VivoBook with PID 4428 (/home/bartholoseu/Github/Projeto-Usabilidade/oficina/target/classes started by bartholoseu in /home/bartholoseu/Github/Projeto-Usabilidade/oficina)
+19-06-2023 19:09:09.593 | 1296 | [main] | INFO  | com.pdv.oficina.OficinaApplication - No active profile set, falling back to 1 default profile: "default"
+19-06-2023 19:09:17.070 | 8773 | [main] | INFO  | com.pdv.oficina.OficinaApplication - Started OficinaApplication in 8.113 seconds (JVM running for 8.982)
+19-06-2023 19:09:17.076 | 8779 | [main] | INFO  | com.pdv.oficina.OficinaApplication - API da oficina iniciada e pronta para receber requisições
+19-06-2023 19:10:11.560 | 63263 | [http-nio-8080-exec-4] | INFO  | com.pdv.oficina.OficinaApplication - Criando login para: jao, Role: ADMIN
+19-06-2023 19:11:49.425 | 161128 | [http-nio-8080-exec-3] | INFO  | com.pdv.oficina.OficinaApplication - Venda realizada no valor de: 150, pelo funcionáirio: jao, na data: Mon Jun 19 19:11:49 BRT 2023
+19-06-2023 19:12:52.172 | 223875 | [http-nio-8080-exec-6] | INFO  | com.pdv.oficina.OficinaApplication - Gastos mensais referentes a data de fechamento: Mon Jun 19 19:12:52 BRT 2023
+19-06-2023 19:14:19.270 | 310973 | [http-nio-8080-exec-2] | INFO  | com.pdv.oficina.OficinaApplication - Criando login para: maria, Role: FUNCIONARIO
+19-06-2023 19:16:33.646 | 391  | [main] | INFO  | com.pdv.oficina.OficinaApplication - Iniciando API da oficina
+19-06-2023 19:16:34.398 | 1143 | [main] | INFO  | com.pdv.oficina.OficinaApplication - Starting OficinaApplication using Java 17.0.7 on bartholoseu-VivoBook with PID 6022 (/home/bartholoseu/Github/Projeto-Usabilidade/oficina/target/classes started by bartholoseu in /home/bartholoseu/Github/Projeto-Usabilidade/oficina)
+19-06-2023 19:16:34.400 | 1145 | [main] | INFO  | com.pdv.oficina.OficinaApplication - No active profile set, falling back to 1 default profile: "default"
+19-06-2023 19:16:40.635 | 7380 | [main] | INFO  | com.pdv.oficina.OficinaApplication - Started OficinaApplication in 6.806 seconds (JVM running for 7.622)
+19-06-2023 19:16:40.638 | 7383 | [main] | INFO  | com.pdv.oficina.OficinaApplication - API da oficina iniciada e pronta para receber requisições
+19-06-2023 19:20:32.056 | 238801 | [http-nio-8080-exec-3] | INFO  | com.pdv.oficina.OficinaApplication - Criando login para: jao, Role: ADMIN
+19-06-2023 19:23:17.333 | 404078 | [http-nio-8080-exec-10] | INFO  | com.pdv.oficina.OficinaApplication - Criando login para: maria, Role: FUNCIONARIO
+19-06-2023 19:25:43.928 | 550673 | [http-nio-8080-exec-5] | INFO  | com.pdv.oficina.OficinaApplication - Venda realizada no valor de: 400, pelo funcionáirio: maria, na data: Mon Jun 19 19:25:43 BRT 2023
+19-06-2023 19:27:05.339 | 632084 | [http-nio-8080-exec-2] | INFO  | com.pdv.oficina.OficinaApplication - Gastos mensais referentes a data de fechamento: Mon Jun 19 19:27:05 BRT 2023
+19-06-2023 21:30:46.556 | 452  | [main] | INFO  | com.pdv.oficina.OficinaApplication - Iniciando API da oficina
+19-06-2023 21:30:47.315 | 1211 | [main] | INFO  | com.pdv.oficina.OficinaApplication - Starting OficinaApplication using Java 17.0.7 on bartholoseu-VivoBook with PID 5659 (/home/bartholoseu/Github/Projeto-Usabilidade/oficina/target/classes started by bartholoseu in /home/bartholoseu/Github/Projeto-Usabilidade/oficina)
+19-06-2023 21:30:47.318 | 1214 | [main] | INFO  | com.pdv.oficina.OficinaApplication - No active profile set, falling back to 1 default profile: "default"
+19-06-2023 21:30:56.516 | 10412 | [main] | INFO  | com.pdv.oficina.OficinaApplication - Started OficinaApplication in 9.708 seconds (JVM running for 10.715)
+19-06-2023 21:30:56.519 | 10415 | [main] | INFO  | com.pdv.oficina.OficinaApplication - API da oficina iniciada e pronta para receber requisições
+19-06-2023 21:31:27.631 | 41527 | [http-nio-8080-exec-4] | INFO  | com.pdv.oficina.OficinaApplication - Criando login para: jao, Role: ADMIN
+19-06-2023 21:44:11.801 | 805697 | [http-nio-8080-exec-3] | INFO  | com.pdv.oficina.OficinaApplication - Gastos mensais referentes a data de fechamento: Mon Jun 19 21:44:11 BRT 2023

@@ -1,6 +1,7 @@
 package com.pdv.oficina.model.service;
 
 
+import com.pdv.oficina.OficinaApplication;
 import com.pdv.oficina.model.entity.Funcionario;
 import com.pdv.oficina.model.entity.GastosMensais;
 import com.pdv.oficina.model.entity.Produto;
@@ -9,6 +10,8 @@ import com.pdv.oficina.model.repository.FuncionariosRepository;
 import com.pdv.oficina.model.repository.GastosMensaisRepository;
 import com.pdv.oficina.model.repository.ProdutosRepository;
 import com.pdv.oficina.model.repository.VendasRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +23,8 @@ import java.util.List;
 
 @Service
 public class GastosMensaisService extends GenericCrudService<GastosMensais, Long, GastosMensaisRepository>{
+
+    private static final Logger logger = LoggerFactory.getLogger(OficinaApplication.class);
 
     @Autowired
     private GastosMensaisRepository gastosRepository;
@@ -80,6 +85,7 @@ public class GastosMensaisService extends GenericCrudService<GastosMensais, Long
         gastos.setFechamento(date);
 
         gastosRepository.save(gastos);
+        logger.info("Gastos mensais referentes a data de fechamento: " + date);
 
         return gastos;
     }

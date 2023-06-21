@@ -101,5 +101,13 @@ export class CadastroClienteComponent implements OnInit {
 
   }
 
+  backButton(){
+    if(this.isVenda == 'clientes/cadastro/venda'){
+      this.router.navigate(['/venda']);
+    } else{
+      this.router.navigate(['/clientes']);
+    }
+  }
+
 
 }

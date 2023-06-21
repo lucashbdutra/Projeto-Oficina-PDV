@@ -1,6 +1,7 @@
 package com.pdv.oficina.model.service;
 
 
+import com.pdv.oficina.OficinaApplication;
 import com.pdv.oficina.model.DTO.VendasPorFuncionarioDTO;
 import com.pdv.oficina.model.entity.Funcionario;
 import com.pdv.oficina.model.entity.Login;
@@ -9,6 +10,8 @@ import com.pdv.oficina.model.entity.Venda;
 import com.pdv.oficina.model.repository.LoginRepository;
 import com.pdv.oficina.model.repository.ProdutosRepository;
 import com.pdv.oficina.model.repository.VendasRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +24,8 @@ import java.util.List;
 
 @Service
 public class VendaService extends GenericCrudService<Venda, Long, VendasRepository>{
+
+    private static final Logger logger = LoggerFactory.getLogger(OficinaApplication.class);
 
     @Autowired
     private VendasRepository vendasRepository;
@@ -66,6 +71,7 @@ public class VendaService extends GenericCrudService<Venda, Long, VendasReposito
         venda.setLogin(usuario);
 
         vendasRepository.save(venda);
+        logger.info("Venda realizada no valor de: " + venda.getValor() + ", pelo funcionáirio: " + username + ", na data: " + date);
         return venda;
     }
 

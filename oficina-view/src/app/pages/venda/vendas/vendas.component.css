@@ -1,38 +1,14 @@
-.dropdown {
-  position: relative;
+h2{
+  text-align: center;
 }
 
-.dropdown::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 8px solid white;
-  right: 16px;
-  top: 40%;
+h4{
+  text-align: center;
 }
 
-.dropdown-toggle {
-  min-width: 100%;
-  max-width: 100%;
-  text-align: left;
-}
-
-.dropdown-toggle::after {
-  display: none;
-}
-
-.dropdown-menu {
-  min-width: 100%;
-  max-width: 100%;
-  max-height: 100px;
-  overflow-y: auto;
-}
-
-.dropdown-item {
-  white-space: initial;
+.margin{
+  margin-left: 1%;
+  margin-right: 1%;
 }
 
 .product-list {
@@ -43,63 +19,71 @@
   border-radius: 0.375rem;
 }
 
-.client-option {
-  display: flex;
-  align-items: center;
-  min-height: 36px;
-  padding-left: 8px;
-}
-
-.input-div {
-  padding-left: 4px;
-}
-
-.margin{
-  margin-left: 1%;
-}
-
-h2{
-  text-align: center;
-  text-decoration:underline;
-}
-h4{
-  text-align: center;
-}
-
-#pagamento, #desconto{
-  margin-left: 2%;
-}
-#pagamento label{
-  margin-top: 5%;
-}
-#desconto label{
-  margin-top: 2%;
-}
-#desconto button{
-  margin-top: 2%;
-}
-#total{
-  margin-left: 2%;
-}
-#finalizar-venda{
-  margin-left: 2%;
-}
-#finalizar-venda button{
-  margin-bottom: 2%;
-}
-
-#desconto input{
-  margin-left: 1%;
-}
-
-.space{
-  margin-bottom: 1%;
-}
-
 .d-flex{
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 2%;
+  width: 550px;
+}
 
+.buscar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quant{
+  width: 170px;
+}
+
+.add-produto{
+  width: 200px;
+  color: black;
+  background-color: green;
+  border-radius: 10px;
+  padding: 6px;
+}
+
+.menu-venda{
+  background-color: #2C3034;
+  color: white;
+  border-radius: 10px;
+  margin-right: 70%;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+#sub-total{
+  margin-bottom: 1%;
+}
+#pagamento, #desconto, #total{
+  margin-left: 1%;
+}
+#finalizar-venda{
+  margin-left: 1%;
+}
+#pagamento label{
+  margin-top: 5%;
+}
+#finalizar-venda button{
+  margin-bottom: 5%;
+}
+#desconto label{
+  margin-top: 2%;
+}
+#desconto input{
+  margin-left: 1%;
+  border-radius: 10px;
+  width: 130px;
+}
+#desconto button{
+  margin-top: 2%;
+}
+#botao-confirmar{
+  background-color: rgb(60, 178, 247);
+  border-color: black;
+}
+#botao-finalizar{
+  background-color: green;
+  border-color: black;
 }

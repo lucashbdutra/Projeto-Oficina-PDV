@@ -1,6 +1,6 @@
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProdutosService } from './../../../services/produtos.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Venda } from '../../../interfaces/venda';
 import { ClientesService } from 'src/app/services/clientes.service';
@@ -51,6 +51,7 @@ export class VendasComponent implements OnInit {
     private vendasService: VendasService,
     private produtosService: ProdutosService,
     private localStorage: LocalStorageService,
+    private router: Router,
     private route: ActivatedRoute,
     private toaster: ToastrService
   ) { }
@@ -151,6 +152,7 @@ export class VendasComponent implements OnInit {
         this.toaster.success('Venda realizada com sucesso!', '', {
           timeOut: 2000,
         });
+        this.router.navigate(['/home']);
       }
     }, (error) => {
       this.toaster.error(ALERT_MESSAGE.ERROR_SELL, '', {
